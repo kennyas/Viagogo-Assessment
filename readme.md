@@ -1,0 +1,5 @@
+﻿## The best approach in fetching the events to be sent to the customer is by filtering events based on customer's' location. This implies that if the Customer resides in New York, only events around New York will the customer be notified o.
+# This currently is handled inside the foreach loop
+## The AddToEmail method is a static method, so we just call it directly without instantiation
+## The expected output is the customer name, the event name and the event location and the event cost/price, as seen in the console.log
+## I believe the AddToEmail method can be optimized to accept list of events which can be sent to the customer's email directly', rather than accepting a single event object, which needs to go through iteration for just a single customer. This will amount to  performance issue if the AddToEmail methods should cater for multiple customers
