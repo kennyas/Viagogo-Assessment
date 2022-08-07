@@ -29,7 +29,7 @@ namespace Viagogo_Assessment
                 new Event{ Name = "LadyGaGa", City = "Washington DC"}
             };
 
-            var customer = new Customer { Name = "John Smith", City = "New York" };
+            var customer = new Customer { Name = "John Smith", City = "New York City" };
 
             //var q = events.Where(x => x.City.Equals("New York"));
 
@@ -49,7 +49,7 @@ namespace Viagogo_Assessment
             {
                 var distance = GetDistance(c.City, e.City);
                 Console.Out.WriteLine($"{c.Name} in {c.City}: {e.Name} in {e.City}"
-                + (distance > 0 ? $" ({distance} miles away)" : "0")
+                + (distance > 0 ? $" ({distance} miles away)" : " 0 miles away")
                 + (price.HasValue ? $" for ${price}" : ""));
             }
             //refactored GetDistance method
@@ -96,8 +96,8 @@ namespace Viagogo_Assessment
                     {
                         DataSet dsResult = new DataSet();
                         dsResult.ReadXml(reader);
-                        var dist = reader.ReadLine();
-                        distance = Convert.ToDouble(dsResult.Tables["distance"].Rows[0]["value"]);//dsResult.Tables["distance"].Rows[0]["text"].ToString();
+                        // returned zero when the API response returns null value, this prevents the API error from preventing the loop to keep running
+                        distance = dsResult != null ? Convert.ToDouble(dsResult.Tables["distance"].Rows[0]["value"]) : 0;//dsResult.Tables["distance"].Rows[0]["text"].ToString();
                         distanceInKilometers = distance / 1000;
                     }
                 }

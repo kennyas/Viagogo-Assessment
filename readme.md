@@ -3,3 +3,5 @@
 ## The AddToEmail method is a static method, so we just call it directly without instantiation
 ## The expected output is the customer name, the event name and the event location and the event cost/price, as seen in the console.log
 ## I believe the AddToEmail method can be optimized to accept list of events which can be sent to the customer's email directly', rather than accepting a single event object, which needs to go through iteration for just a single customer. This will amount to  performance issue if the AddToEmail methods should cater for multiple customers
+## The GetDistance method was refactored to use Google map API in order to fetch the distance in kilometers between the two cities, destination and origin. This is then converted to miles which is returned in the AddToEmail method
+## One way to verify that the code works fine is by comparing the miles output with the sample mile distance provided in the pdf document. There seems to be some level of approximate values to the ones shared
