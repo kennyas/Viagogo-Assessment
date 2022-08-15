@@ -171,7 +171,7 @@ namespace Viagogo_Assessment
             //            where result.Contains("New York")
             //            select result;
             // 1. TASK SendEventsInCustomerCity
-            var eventsInCustomerCity = events.Where(x => x.City == customer.City).ToList();
+            var eventsInCustomerCity = events.Where(x => x.City != null && x.City == customer.City).ToList();
             Console.WriteLine($"Fetch events in customer city");
             foreach (var item in eventsInCustomerCity)
             {
@@ -205,6 +205,7 @@ namespace Viagogo_Assessment
             //    AddToEmail(customer, item.Event);
             //}
             //Console.WriteLine("=================================================");
+            //The Distance is cached assuming the GetDistance method is expensive and the error is catched and a value is returned in order to ensure the code is still running, irrespective of whether the GetDistance API/method fails
             static int FetchDistanceInDictionaryCache(string origin, string destination)
             {
 
